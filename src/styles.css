@@ -63,3 +63,8 @@ ul {
 .temperatureCurrent {
   font-size: 30px;
 }
+.gitHubSource {
+  font-size: 12px;
+  display: block;
+  margin: 0 auto;
+}
