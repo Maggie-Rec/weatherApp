@@ -1,0 +1,65 @@
+.wind-icon {
+  height: 90px;
+  width: 90px;
+  padding: 0;
+}
+
+.inside {
+  padding-top: 20px;
+  padding-right: 0;
+}
+
+ul {
+  list-style: none;
+  line-height: 1.2;
+  margin-top: 10px;
+  padding-left: 15px;
+}
+.weatherApp {
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  max-width: 550px;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 5%;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
+}
+#tempCel {
+  font-size: 30px;
+}
+.time {
+  font-size: 20px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+.dateTime {
+  padding-left: 10px;
+}
+.stats {
+  font-size: 12px;
+}
+.fiveDays {
+  padding: 0px;
+}
+.li .fiveDays {
+  font-size: 12px;
+}
+#tempCel {
+  color: rgb(43, 107, 226);
+  text-decoration: none;
+}
+#tempCel :hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#tempFahr {
+  font-size: 16px;
+  position: relative;
+  bottom: 10px;
+  color: rgb(43, 107, 226);
+}
+#tempFahr :hover {
+  cursor: pointer;
+}
+.temperatureCurrent {
+  font-size: 30px;
+}
