@@ -29,6 +29,18 @@ function showCity(event) {
 let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", showCity);
 
+function currentPosition(position) {
+  let currentButton = document.querySelector("#change-city");
+  currentButton.innerHTML = position.coords.latitude;
+}
+
+function showCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(currentPosition);
+}
+
+let currentLocation = document.querySelector(".currentLocation");
+currentLocation.addEventListener("click", showCurrentPosition);
+
 let days = [
   "Sunady",
   "Monday",
