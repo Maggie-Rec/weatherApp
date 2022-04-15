@@ -10,6 +10,8 @@ function displayWeather(response) {
   country.innerHTML = response.data.sys.country;
   let pressure = document.querySelector("#pressure");
   pressure.innerHTML = response.data.main.pressure;
+  let cityName = document.querySelector("#change-city");
+  cityName.innerHTML = response.data.name;
 }
 
 function showCity(event) {
@@ -30,11 +32,14 @@ let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", showCity);
 
 function currentPosition(position) {
-  let currentButton = document.querySelector("#change-city");
-  currentButton.innerHTML = position.coords.latitude;
+  let apiKey = `c5a356ad92d64faf6646a907c456e071`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayWeather);
 }
 
-function showCurrentPosition() {
+function showCurrentPosition(event) {
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentPosition);
 }
 
