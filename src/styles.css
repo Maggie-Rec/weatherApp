@@ -79,3 +79,7 @@ ul {
   text-decoration: none;
   cursor: default;
 }
+.minTempLine {
+  position: relative;
+  left: 75px;
+}
