@@ -9,11 +9,13 @@ function displayWeather(response) {
   let icon = document.querySelector("#icon");
   let minTemperature = document.querySelector("#lowTemp");
   let maxTemperature = document.querySelector("#highTemp");
+  let description = document.querySelector(".description");
 
   celciusTemperature = response.data.main.temp;
   minimumTemperature = response.data.main.temp_min;
   maximumTemperature = response.data.main.temp_max;
 
+  description.innerHTML = response.data.weather[0].description;
   minTemperature.innerHTML = Math.round(minimumTemperature);
   maxTemperature.innerHTML = Math.round(maximumTemperature);
   displayCurrentWeather.innerHTML = Math.round(celciusTemperature);
@@ -61,7 +63,7 @@ let currentLocation = document.querySelector(".currentLocation");
 currentLocation.addEventListener("click", showCurrentPosition);
 
 let days = [
-  "Sunady",
+  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -116,16 +118,17 @@ function convertToFahrenheit(event) {
   temperatureUnit.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
   let temperatureHigh = document.querySelector("#highTemp");
   let temperatureLow = document.querySelector("#lowTemp");
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 
   temperatureHigh.innerHTML = Math.round((maximumTemperature * 9) / 5 + 32);
   temperatureLow.innerHTML = Math.round((minimumTemperature * 9) / 5 + 32);
 }
 
-let fahrenheitLink = document.querySelector("#tempFahr");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
 function comeBackToCelcius(event) {
   event.preventDefault();
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let temperatureUnit = document.querySelector(".temperatureCurrent");
   temperatureUnit.innerHTML = Math.round(celciusTemperature);
   let temperatureHigh = document.querySelector("#highTemp");
@@ -133,8 +136,9 @@ function comeBackToCelcius(event) {
 
   temperatureHigh.innerHTML = Math.round(maximumTemperature);
   temperatureLow.innerHTML = Math.round(minimumTemperature);
-  console.log(temperatureHigh);
 }
+let fahrenheitLink = document.querySelector("#tempFahr");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celciusLink = document.querySelector("#tempCel");
 celciusLink.addEventListener("click", comeBackToCelcius);
