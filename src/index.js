@@ -1,18 +1,27 @@
 function displayWeather(response) {
-  let displayCurrentWeather = document.querySelector(".temperatureCurrent");
-  displayCurrentWeather.innerHTML = Math.round(response.data.main.temp);
   console.log(response);
+  let displayCurrentWeather = document.querySelector(".temperatureCurrent");
   let windSpeed = document.querySelector("#wind");
-  windSpeed.innerHTML = Math.round(response.data.wind.speed);
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = response.data.main.humidity;
   let country = document.querySelector("#country");
-  country.innerHTML = response.data.sys.country;
   let pressure = document.querySelector("#pressure");
-  pressure.innerHTML = response.data.main.pressure;
   let cityName = document.querySelector("#change-city");
-  cityName.innerHTML = response.data.name;
   let icon = document.querySelector("#icon");
+  let minTemperature = document.querySelector("#lowTemp");
+  let maxTemperature = document.querySelector("#highTemp");
+
+  celciusTemperature = response.data.main.temp;
+  minimumTemperature = response.data.main.temp_min;
+  maximumTemperature = response.data.main.temp_max;
+
+  minTemperature.innerHTML = Math.round(minimumTemperature);
+  maxTemperature.innerHTML = Math.round(maximumTemperature);
+  displayCurrentWeather.innerHTML = Math.round(celciusTemperature);
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  humidity.innerHTML = response.data.main.humidity;
+  country.innerHTML = response.data.sys.country;
+  pressure.innerHTML = response.data.main.pressure;
+  cityName.innerHTML = response.data.name;
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -104,15 +113,17 @@ time.innerHTML = `${hours}:${minutes}`;
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureUnit = document.querySelector(".temperatureCurrent");
-  let temperature = temperatureUnit.innerHTML;
-  temperatureUnit.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  temperatureUnit.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
   let temperatureHigh = document.querySelector("#highTemp");
   let temperatureLow = document.querySelector("#lowTemp");
-  let highTemp = temperatureHigh.innerHTML;
-  let lowTemp = temperatureLow.innerHTML;
-  temperatureHigh.innerHTML = Math.round((highTemp * 9) / 5 + 32);
-  temperatureLow.innerHTML = Math.round((lowTemp * 9) / 5 + 32);
+
+  temperatureHigh.innerHTML = Math.round((maximumTemperature * 9) / 5 + 32);
+  temperatureLow.innerHTML = Math.round((minimumTemperature * 9) / 5 + 32);
 }
 
 let fahrenheitLink = document.querySelector("#tempFahr");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let celciusTemperature = null;
+let minimumTemperature = null;
+let maximumTemperature = null;
