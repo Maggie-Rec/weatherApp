@@ -17,124 +17,89 @@
   <body>
     <div class="container">
       <div class="weatherAppWrapper">
-      <div class="weatherApp">
-        <form id="search-engine">
-          <div class="row">
-            <div class="col-6">
-              <input
-                type="search"
-                id="search-city"
-                placeholder="Search the city.."
-                class="form-control"
-              />
+        <div class="weatherApp">
+          <form id="search-engine">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="search"
+                  id="search-city"
+                  placeholder="Search the city.."
+                  class="form-control"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  class="btn btn-secondary"
+                  value="Search!"
+                />
+              </div>
+              <div class="col-3">
+                <button type="button" class="btn btn-info currentLocation">
+                  Current
+                </button>
+              </div>
             </div>
-            <div class="col-3">
-              <input type="submit" class="btn btn-secondary" value="Search!" />
-            </div>
-            <div class="col-3"><button type="button" class="btn btn-info currentLocation">Current</button></div>
-          </div>
-        </form>
-        <div class="inside">
-          <div class="row">
-            <div class="col-6">
-              <img
-                class="wind-icon float-start"
-                src="images/wind.png"
-                id="icon"
-                alt="wind icon"
-              />
-              <ul class="cityList">
-                <li>
-                  <span id="units">
-                    <span class="temperatureCurrent"></span>
-                    <span id="tempCel" class="active">°C </span
-                    ><span id="tempFahr">°F</span></span
-                  >
-                </li>
-                <li>
-                  <span id="change-city">City</span>,
-                  <span id="country">country</span>
-                </li>
-                <li>
-                  <span class="description">description</span>
-                </li>
-                <li>
-                 max. <span id="highTemp"></span>° 
-                </li>
-                <li class="minTempLine">
-                  min. <span id="lowTemp"></span>°
-                </li>
-              </ul>
-            </div>
-            <div class="col-5">
-              <div class="card">
-                <div class="row">
-                  <div class="col-8">
-                    <ul class="dateTime">
-                      <li><span id="day">Monday</span></li>
-                      <li><span id="date">14/03/2022</span></li>
-                      <br />
-                      <span class="stats">
-                        <li>Humidity: <span id="humidity"> </span>%</li>
-                        <li>Wind: <span id="wind">  </span>km/h</li>
-                        <li>Pressure: <span id="pressure"> </span>hPa</li>
-                      </span>
-                    </ul>
+          </form>
+          <div class="inside">
+            <div class="row">
+              <div class="col-6">
+                <img
+                  class="wind-icon float-start"
+                  src="images/wind.png"
+                  id="icon"
+                  alt="wind icon"
+                />
+                <ul class="cityList">
+                  <li>
+                    <span id="units">
+                      <span class="temperatureCurrent"></span>
+                      <span id="tempCel" class="active">°C </span
+                      ><span id="tempFahr">°F</span></span
+                    >
+                  </li>
+                  <li>
+                    <span id="change-city">City</span>,
+                    <span id="country">country</span>
+                  </li>
+                  <li>
+                    <span class="description">description</span>
+                  </li>
+                  <li>max. <span id="highTemp"></span>°</li>
+                  <li class="minTempLine">min. <span id="lowTemp"></span>°</li>
+                </ul>
+              </div>
+              <div class="col-5">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-8">
+                      <ul class="dateTime">
+                        <li><span id="day">Monday</span></li>
+                        <li><span id="date">14/03/2022</span></li>
+                        <br />
+                        <span class="stats">
+                          <li>Humidity: <span id="humidity"> </span>%</li>
+                          <li>Wind: <span id="wind"> </span>km/h</li>
+                          <li>Pressure: <span id="pressure"> </span>hPa</li>
+                        </span>
+                      </ul>
+                    </div>
+                    <div class="col-4 float-end time" id="time">15:04</div>
                   </div>
-                  <div class="col-4 float-end time" id="time">15:04</div>
                 </div>
               </div>
             </div>
           </div>
+          <h3>Next 5 days:</h3>
+          <div class="fiveDays" id="weather-forecast"></div>
+          <small>
+            <a href="https://github.com/Maggie-Rec/weatherApp" target="_blank"
+              >Open Source</a
+            >
+            Coded by MaggieR</small
+          >
         </div>
-        <h3>Next 5 days:</h3>
-        <div class="row g-10 fiveDays">
-          <div class="col text-center">
-            Tuesday
-            <img src="images/cloud.png" width="60px" alt="cloud icon" />
-            <ul>
-              <li>20°C</li>
-              <li>15°C</li>
-            </ul>
-          </div>
-          <div class="col text-center">
-            Wednesday
-            <img src="images/rain.png" width="60px" alt="rain icon" />
-            <ul>
-              <li>16°C</li>
-              <li>13°C</li>
-            </ul>
-          </div>
-          <div class="col text-center">
-            Thursday
-            <img src="images/thunder.png" width="60px" alt="thunder icon" />
-            <ul>
-              <li>22°C</li>
-              <li>20°C</li>
-            </ul>
-          </div>
-          <div class="col text-center">
-            Friday
-            <img src="images/sun-cloud.png" width="60px" alt="suncloud icon" />
-            <ul>
-              <li>28°C</li>
-              <li>18°C</li>
-            </ul>
-          </div>
-          <div class="col text-center">
-            Saturday
-            <img src="images/sun.png" width="60px" alt="sun icon" />
-            <ul>
-              <li>31°C</li>
-              <li>18°C</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <small>
-        <a href="https://github.com/Maggie-Rec/weatherApp" target="_blank">Open Source</a>
-        Coded by MaggieR</small>
-      </div>
       </div>
     </div>
     <script src="src/index.js"></script>

@@ -1,5 +1,11 @@
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = `c5a356ad92d64faf6646a907c456e071`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+}
+
 function displayWeather(response) {
-  console.log(response);
   let displayCurrentWeather = document.querySelector(".temperatureCurrent");
   let windSpeed = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
@@ -28,6 +34,8 @@ function displayWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function showCity(event) {
@@ -38,8 +46,6 @@ function showCity(event) {
 
   let apiKey = `c5a356ad92d64faf6646a907c456e071`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity.value}&appid=${apiKey}&units=metric`;
-
-  console.log(apiUrl);
 
   axios.get(apiUrl).then(displayWeather);
 }
@@ -112,6 +118,31 @@ if (minutes < 10) {
 
 time.innerHTML = `${hours}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+     
+       <div class="col-2">
+            <div class="forecast-date">${day}</div>
+            <img src="images/cloud.png" width="60px" alt="cloud icon" />
+            <ul>
+              <li class="forecast-temperature-max">20°C</li>
+              <li class="forecast-temperature-min">15°C</li>
+            </ul>
+          </div>
+       `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureUnit = document.querySelector(".temperatureCurrent");
@@ -137,6 +168,7 @@ function comeBackToCelcius(event) {
   temperatureHigh.innerHTML = Math.round(maximumTemperature);
   temperatureLow.innerHTML = Math.round(minimumTemperature);
 }
+
 let fahrenheitLink = document.querySelector("#tempFahr");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
@@ -146,3 +178,5 @@ celciusLink.addEventListener("click", comeBackToCelcius);
 let celciusTemperature = null;
 let minimumTemperature = null;
 let maximumTemperature = null;
+
+displayForecast();
