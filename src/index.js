@@ -124,6 +124,21 @@ function convertToFahrenheit(event) {
 let fahrenheitLink = document.querySelector("#tempFahr");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
+function comeBackToCelcius(event) {
+  event.preventDefault();
+  let temperatureUnit = document.querySelector(".temperatureCurrent");
+  temperatureUnit.innerHTML = Math.round(celciusTemperature);
+  let temperatureHigh = document.querySelector("#highTemp");
+  let temperatureLow = document.querySelector("#lowTemp");
+
+  temperatureHigh.innerHTML = Math.round(maximumTemperature);
+  temperatureLow.innerHTML = Math.round(minimumTemperature);
+  console.log(temperatureHigh);
+}
+
+let celciusLink = document.querySelector("#tempCel");
+celciusLink.addEventListener("click", comeBackToCelcius);
+
 let celciusTemperature = null;
 let minimumTemperature = null;
 let maximumTemperature = null;
