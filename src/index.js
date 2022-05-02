@@ -131,11 +131,11 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay) {
-    console.log(forecastDay);
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
      
        <div class="col-2">
             <div class="forecast-date">${formatForecastDate(
@@ -154,43 +154,12 @@ function displayForecast(response) {
             </ul>
           </div>
        `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureUnit = document.querySelector(".temperatureCurrent");
-  temperatureUnit.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
-  let temperatureHigh = document.querySelector("#highTemp");
-  let temperatureLow = document.querySelector("#lowTemp");
-  celciusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-
-  temperatureHigh.innerHTML = Math.round((maximumTemperature * 9) / 5 + 32);
-  temperatureLow.innerHTML = Math.round((minimumTemperature * 9) / 5 + 32);
-}
-
-function comeBackToCelcius(event) {
-  event.preventDefault();
-  celciusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureUnit = document.querySelector(".temperatureCurrent");
-  temperatureUnit.innerHTML = Math.round(celciusTemperature);
-  let temperatureHigh = document.querySelector("#highTemp");
-  let temperatureLow = document.querySelector("#lowTemp");
-
-  temperatureHigh.innerHTML = Math.round(maximumTemperature);
-  temperatureLow.innerHTML = Math.round(minimumTemperature);
-}
-
-let fahrenheitLink = document.querySelector("#tempFahr");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-let celciusLink = document.querySelector("#tempCel");
-celciusLink.addEventListener("click", comeBackToCelcius);
 
 let celciusTemperature = null;
 let minimumTemperature = null;
