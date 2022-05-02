@@ -1,8 +1,8 @@
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = `c5a356ad92d64faf6646a907c456e071`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeather(response) {
@@ -118,7 +118,8 @@ if (minutes < 10) {
 
 time.innerHTML = `${hours}:${minutes}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -178,5 +179,3 @@ celciusLink.addEventListener("click", comeBackToCelcius);
 let celciusTemperature = null;
 let minimumTemperature = null;
 let maximumTemperature = null;
-
-displayForecast();
