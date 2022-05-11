@@ -44,6 +44,10 @@ ul {
 .dateTime {
   padding-left: 10px;
 }
+.time-date-row {
+  background-color: white;
+  max-width: 400px;
+}
 .stats {
   font-size: 12px;
 }
@@ -88,4 +92,27 @@ ul {
 }
 #weather-forecast {
   text-align: center;
+}
+@media (max-width: 600px) {
+  .currentLocation {
+    display: none;
+  }
+  .btn {
+    padding: 5px 30px;
+    margin: 0 15px;
+  }
+  .minTempLine {
+    margin: 0 -74px;
+  }
+  .dateTime {
+    padding: 0;
+  }
+  .time {
+    font-size: 16px;
+    padding-left: 0;
+    padding-top: 46px;
+  }
+  #tempCel {
+    font-size: 12px;
+  }
 }
